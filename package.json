@@ -22,9 +22,10 @@
   "author": "Amit Kothari <amit@amitkothari.com>",
   "license": "MIT",
   "dependencies": {
-    "underscore": "~1.6.0",
-    "request": "~2.34.0",
     "fields": "~0.1.12",
-    "node-appc": "~0.2.0"
+    "https-proxy-agent": "^1.0.0",
+    "node-appc": "~0.2.0",
+    "request": "~2.34.0",
+    "underscore": "~1.6.0"
   }
 }
