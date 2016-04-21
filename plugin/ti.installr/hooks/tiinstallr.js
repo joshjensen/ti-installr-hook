@@ -3,8 +3,7 @@ var _ = require("underscore"),
     afs = require("node-appc").fs,
     path = require("path"),
     request = require('request'),
-    fields = require("fields"),
-    HttpsProxyAgent = require('https-proxy-agent');
+    fields = require("fields");
 
 exports.cliVersion = '>=3.2';
 
@@ -86,16 +85,14 @@ function upload2Installr(data, finished) {
     logger.info('Uploading app to installr');
 
     var proxy = null;
-    var agent = null;
     if (data.cli.argv['installr-https-proxy']) {
         proxy = data.cli.argv['installr-https-proxy'];
-        agent = new HttpsProxyAgent(proxy);
     }
 
     var r = request.post({
         url: 'https://www.installrapp.com/apps.json',
         headers: {'X-InstallrAppToken': config.api_token},
-        agent: agent
+        proxy: proxy,
     }, function optionalCallback(err, httpResponse, body) {
         if (err) {
             logger.error(err);
